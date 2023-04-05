@@ -1,0 +1,69 @@
+GET http://localhost:3000/users/one/6421d8ca63fa876ef644dfe0
+
+
+###
+
+POST http://localhost:3000/users/login
+Content-Type: application/json
+
+{
+  "email": "ali@g.c",
+  "password": "123456"
+}
+
+
+###
+
+POST http://localhost:3000/users/new
+Content-Type: application/json
+
+{
+  "email": "ali@g.c",
+  "password": "123456",
+  "username": "mish3l"
+}
+
+
+###
+
+PATCH http://localhost:3000/users/update/641afe1c042f204636d1f2c0
+Content-Type: application/json
+
+{
+  "email": "meshaal.nasor10@gmail.com",
+  "password": "123456",
+  "username": "mishaal"
+}
+
+
+
+
+# Voting *************************
+###
+
+POST http://localhost:3000/votings/update
+Content-Type: application/json
+
+{
+  "stock": "djia_voting",
+  "day": "23-03-2023",
+  "which": "down"
+}
+
+
+
+# Messages *************************
+###
+
+GET http://localhost:3000/messages/djia_voting
+
+
+# Conversations *************************
+###
+
+GET http://localhost:3000/conversations/hi/fi
+
+###
+
+GET http://localhost:3000/conversations/profile/641c142a84918caba8eb476b
+
