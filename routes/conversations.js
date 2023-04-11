@@ -19,15 +19,26 @@ router.post("/conv/:from/:to", async (req, res) => {
       participants: { $all: [from, to] },
     });
     if (tryFind.length > 0) {
-      res.json({ success: true, op: "found", data: tryFind[0] });
+      const convers = tryFind[0];
+      const withee = convers.withs.filter((x) => x.user === to)[0];
+      res.json({
+        success: true,
+        op: "found",
+        data: { id: convers._id, withee },
+      });
     } else {
       const convo = new Conversation({
         participants: [from, to],
         withs: [...req.body],
       });
+      const withee = req.body.filter((x) => x.user === to)[0];
       try {
         const savedConvo = await convo.save();
-        res.status(201).json({ succss: true, op: "set", data: savedConvo });
+        res.status(201).json({
+          succss: true,
+          op: "set",
+          data: { id: savedConvo._id, withee },
+        });
       } catch (error) {
         res.status(400).json({ message: error.message });
       }
