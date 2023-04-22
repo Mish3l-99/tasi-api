@@ -37,6 +37,10 @@ router.post("/one", async (req, res) => {
           const voting = new Voting(req.body);
           const savedNew = await voting.save();
           res.json({ success: true, status: "set", data: savedNew });
+        } else {
+          res
+            .status(201)
+            .json({ success: false, message: "Invalid date/time" });
         }
       } catch (error) {
         res.status(400).json({ message: error.message });

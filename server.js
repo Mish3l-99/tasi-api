@@ -12,6 +12,7 @@ var http = require("http").createServer(app);
 // http.use(cors({ origin: OriginAllowed }));
 
 var io = require("socket.io")(http, {
+  path: "/backend/socket.io",
   cors: {
     origin: OriginAllowed,
     methods: ["GET", "POST"],
@@ -32,20 +33,20 @@ app.use(express.json());
 
 // defining a users route and using it
 const usersRoute = require("./routes/users");
-app.use("/users", usersRoute);
-app.use("/profile", express.static("images/profiles"));
+app.use("/backend/users", usersRoute);
+app.use("/backend/profile", express.static("images/profiles"));
 
 // defining a votings route and using it
 const votingsRoute = require("./routes/votings");
-app.use("/votings", votingsRoute);
+app.use("/backend/votings", votingsRoute);
 
 // defining a conversations route and using it
 const conversationsRoute = require("./routes/conversations");
-app.use("/conversations", conversationsRoute);
+app.use("/backend/conversations", conversationsRoute);
 
 // defining a messages route and using it
 const messagesRoute = require("./routes/messages");
-app.use("/messages", messagesRoute);
+app.use("/backend/messages", messagesRoute);
 
 // socket stuff
 const limit = 12;
@@ -139,4 +140,4 @@ io.on("connection", (socket) => {
 // const contentsRouter = require("./routes/contents");
 // app.use("/content", contentsRouter);
 
-http.listen(3000, () => console.log("server started!"));
+http.listen(4000, () => console.log("server started!"));
