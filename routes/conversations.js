@@ -30,6 +30,8 @@ router.post("/conv/:from/:to", async (req, res) => {
       const convo = new Conversation({
         participants: [from, to],
         withs: [...req.body],
+        // today
+        lastMessageDate: new Date().toLocaleDateString(),
       });
       const withee = req.body.filter((x) => x.user === to)[0];
       try {
@@ -60,7 +62,11 @@ router.get("/profile/:id", async (req, res) => {
       const data = [];
       tryFind.map((conv) => {
         const convs = conv.withs.filter((wth) => wth.user !== id)[0];
-        data.push({ conv: conv._id, with: convs });
+        data.push({
+          conv: conv._id,
+          with: convs,
+          lastMessageDate: conv.lastMessageDate,
+        });
       });
 
       res.json({ success: true, data });

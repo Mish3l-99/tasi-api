@@ -1,9 +1,9 @@
-GET http://localhost:3000/users/one/6421d8ca63fa876ef644dfe0
+GET http://localhost:4000/users/one/6421d8ca63fa876ef644dfe0
 
 
 ###
 
-POST http://localhost:3000/users/login
+POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/users/new
+POST http://localhost:4000/users/new
 Content-Type: application/json
 
 {
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3000/users/update/641afe1c042f204636d1f2c0
+PATCH http://localhost:4000/users/update/641afe1c042f204636d1f2c0
 Content-Type: application/json
 
 {
@@ -41,7 +41,7 @@ Content-Type: application/json
 # Voting *************************
 ###
 
-POST http://localhost:3000/votings/update
+POST http://localhost:4000/votings/update
 Content-Type: application/json
 
 {
@@ -55,15 +55,53 @@ Content-Type: application/json
 # Messages *************************
 ###
 
-GET http://localhost:3000/messages/djia_voting
+GET http://localhost:4000/messages/djia_voting
 
 
 # Conversations *************************
 ###
 
-GET http://localhost:3000/conversations/hi/fi
+GET http://localhost:4000/conversations/hi/fi
 
 ###
 
-GET http://localhost:3000/conversations/profile/641c142a84918caba8eb476b
+GET http://localhost:4000/conversations/profile/641c142a84918caba8eb476b
 
+# Ads *************************
+###
+
+
+GET http://localhost:4000/backend/ads/all/2
+
+###
+
+
+POST http://localhost:4000/backend/ads/add
+Content-Type: application/json
+
+{
+  "company_name": "apple",
+  "stocks": 6,
+  "stock_price": 200,
+  "user_id": 2
+}
+
+
+# Posts *************************
+###
+
+
+GET http://localhost:4000/backend/posts/one/644e6d2f14b0e9746129b86b
+
+###
+
+
+POST http://localhost:4000/backend/posts/add
+Content-Type: application/json
+
+{
+  "company_name": "apple",
+  "stocks": 6,
+  "stock_price": 200,
+  "user_id": 2
+}

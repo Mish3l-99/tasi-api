@@ -21,6 +21,7 @@ const conversationSchema = new mongoose.Schema({
   participants: [String],
   withs: [withSchema],
   messages: [messageSchema],
+  lastMessageDate: String,
 });
 
 module.exports = mongoose.model("conversation", conversationSchema);

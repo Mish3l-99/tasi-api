@@ -48,6 +48,15 @@ app.use("/backend/conversations", conversationsRoute);
 const messagesRoute = require("./routes/messages");
 app.use("/backend/messages", messagesRoute);
 
+// defining an ads route and using it
+const adsRoute = require("./routes/ads");
+app.use("/backend/ads", adsRoute);
+
+// defining a Posts route and using it
+const postsRoute = require("./routes/posts");
+app.use("/backend/posts", postsRoute);
+app.use("/backend/post", express.static("images/blogPosts"));
+
 // socket stuff
 const limit = 12;
 const Message = require("./models/message");
@@ -78,6 +87,9 @@ const storePMessage = async (data) => {
   // test env
   const convo = await Conversation.findById(data.room);
 
+  //update last message date
+  convo.lastMessageDate = new Date().toLocaleDateString();
+
   const MssgsNum = convo.messages.length;
   if (MssgsNum <= 100) {
     const fullNew = convo.messages.concat(data);
@@ -89,7 +101,7 @@ const storePMessage = async (data) => {
       console.log(error);
     }
   }
-  //   //   production; nneds work
+  //   //   production; needs work
 };
 
 io.on("connection", (socket) => {
